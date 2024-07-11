@@ -1,3 +1,4 @@
+//@ts-ignore
 import Task from "./components/Task";
 import TaskList from "./components/TaskList";
 
