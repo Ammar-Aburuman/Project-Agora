@@ -1,6 +1,14 @@
+import AddTodo from "./components/input"
+import Items from "./components/Todo"
+
 
 export const Buyer = () => {
-    return(
-    <div>Buyer</div>
-)
+    return (
+        
+        <>
+        <AddTodo/>
+        <Items/>
+        </>
+    )
+    
 }
