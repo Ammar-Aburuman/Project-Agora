@@ -1,23 +1,30 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
 
 
 export const AddListing = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [name,setName] = useState("");
     const [price,setPrice] = useState(0);
 
-    const handle_submit = (e) => {
+    const handle_submit = async (e) => {
         e.preventDefault()
 
         let item = {
             name,price
         }
-        dispatch(addListingtoFirestore(item))
+        try {
+             await dispatch(addListingtoFirestore(item))
+             navigate("/buyer")
+        }
+        catch (error) {
+            console.log("error:", error)
+        }
     }
 
     return (
