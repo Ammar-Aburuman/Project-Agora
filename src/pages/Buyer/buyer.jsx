@@ -10,7 +10,7 @@ export const Buyer = () => {
         <>
         <div>
             <div className="navbar">
-                <h3>Hello <span className="userName">USERNAME_PLACEHOLDER</span> </h3>
+                <h3>Hello <span className="loggedIn_User">USERNAME_PLACEHOLDER</span> </h3>
                 <button onClick={()=>navigate("/list")}>Add listing?</button>
              </div>
              <br />                                  { /*should be removed by an actual border */}
