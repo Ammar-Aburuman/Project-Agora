@@ -11,8 +11,7 @@ export const Login = () => {
         <div className="container">
             <h1>So, we buying or selling?</h1>
             <form>
-            <button className="Buyer" onClick={() => navigate("/Buyer")} >Buying</button>
-            <button className="Seller" onClick={() => navigate("/Seller")} >Selling</button>
+            <button className="Buyer" onClick={() => navigate("/Buyer")} >Login with Google</button>
             </form>
         </div>
     )

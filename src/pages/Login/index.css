@@ -22,7 +22,7 @@ h1 {
 
 form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     padding: 100px;
 
@@ -32,7 +32,6 @@ form {
     padding: 30px;
     border: none;
     border-radius: 5px ;
-    margin-right: 0px;
     color: #fff;
     font-size: 18px;
     background-color: #007bff;
@@ -40,15 +39,3 @@ form {
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
 
-.Seller {
-    padding: 30px;
-    border: none;
-    border-radius: 5px ;
-    margin-left: 10px;
-    color: #fff;
-    font-size: 18px;
-    background-color: #1ed445;
-    cursor: pointer;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-
-}
