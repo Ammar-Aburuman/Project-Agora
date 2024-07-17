@@ -1,9 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
+import { fetchItems } from "../../Firebase/firebase-actions";
 
 export const Buyer = () => {
 
     const navigate = useNavigate();
+    const listings = useSelector((state) => state.listings.listingsArray);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchItems());
+    },[dispatch])
+
 
     return (
         
@@ -18,11 +28,22 @@ export const Buyer = () => {
              <br />                                  { /*should be removed by an actual border */}
              <div className="main-pg">
                 <h2>listings: </h2>
-                <ul>
-                    <li>placeholder sold for placeholder$ by placeholder</li>
-                    <br />
-                    <li>placeholder sold for placeholder$ by placeholder</li>
-                </ul>
+                {listings.length > 0 ? (
+                    <>
+                    {listings.map((item) => (
+                        <div key={item.id}>
+                            <ul>
+                                  <li>{item.item.name} selling for ${item.item.price}</li>
+                                 
+                                 <li>By USER_PLACEHOLDER</li>
+                                 <br />
+                            </ul>
+                        </div>
+                    ))}
+                    </>
+                ): (
+                    <div>There are no Listings</div>
+                )}
              </div>
         </div>
         </>

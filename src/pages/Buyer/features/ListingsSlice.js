@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
+import { addListingtoFirestore , fetchItems} from "../../../Firebase/firebase-actions";
 
 
 export const listingsSlice = createSlice({
@@ -14,6 +14,9 @@ export const listingsSlice = createSlice({
         builder
         .addCase(addListingtoFirestore.fulfilled,(state,action) => {
             state.listingsArray.push(action.payload);
+        })
+        .addCase(fetchItems.fulfilled,(state,action) => {
+            state.listingsArray = action.payload;
         })
 
 
