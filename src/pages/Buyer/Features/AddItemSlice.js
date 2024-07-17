@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    items: [{id:1, text:"Hello", price:500}],
+    items: [],
 };
 
 export const itemSlice = createSlice({
@@ -21,7 +21,7 @@ export const itemSlice = createSlice({
         },
         updateitem: (state,action) => {
             const {id, newText} = action.payload;
-            state.items = state.items.map((item) => item.id == id ? {...item, text: newText} : item);
+            state.items = state.items.map((item) => item.id === id ? {...item, text: newText} : item);
         },
     },
 });
