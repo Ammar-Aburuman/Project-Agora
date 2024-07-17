@@ -1,13 +1,14 @@
-import AddTodo from "./components/input"
-import Items from "./components/Todo"
+
 
 
 export const Buyer = () => {
     return (
         
         <>
-        <AddTodo/>
-        <Items/>
+        <div className="navbar">
+            <h3>Hello <span className="userName">USERNAME_PLACEHOLDER</span> </h3>
+            <button>Add listing?</button>
+        </div>
         </>
     )
     
