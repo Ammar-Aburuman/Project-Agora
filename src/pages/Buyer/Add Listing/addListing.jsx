@@ -12,7 +12,7 @@ export const AddListing = () => {
     const [price,setPrice] = useState(0);
 
     const handle_submit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         let item = {
             name,price
@@ -23,7 +23,7 @@ export const AddListing = () => {
     return (
         <div>
             <div>
-                <form className="lisiting-form" onClick={handle_submit}>
+                <form className="lisiting-form" onSubmit={handle_submit}>
                     <label>Item Name:</label>
                     <input type="text" required placeholder="Item's name..." value={name} onChange={(e)=>{setName(e.target.value)}}/>
                     <br />

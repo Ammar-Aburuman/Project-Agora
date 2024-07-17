@@ -4,7 +4,7 @@ import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
 
 export const listingsSlice = createSlice({
     name: "Listings",
-    intialState: {
+    initialState: {
         listingsArray : []
     },
 
@@ -13,7 +13,7 @@ export const listingsSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(addListingtoFirestore.fulfilled,(state,action) => {
-            state.booksArray.push(action.payload);
+            state.listingsArray.push(action.payload);
         })
 
 
