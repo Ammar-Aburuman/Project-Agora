@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { signInWithPopup } from "firebase/auth"
 import { auth, provider } from "../../Firebase/firebase-config"
 
-import { Grid,Header,Image,Form,Segment,Button,Icon} from "semantic-ui-react"
+import { Grid,Header,Image,Form,Segment,Button,Icon,Divider} from "semantic-ui-react"
 import logo from "./Firebase_Logo.png"
 
 // import "./index.css"
@@ -42,13 +42,15 @@ export const Login = () => {
                             <Icon name="user plus" />
                             Sign up
                         </Button>
-                        
-                    </Segment>
-                    
-                    <Button type="Submit" color="red" onClick={handle_SignIn}>
+
+                        <Divider horizontal>Or</Divider>
+
+                        <Button type="Submit" color="red" onClick={handle_SignIn}>
                             <Icon name="google" />
                             Login with Google
                         </Button>
+                        
+                    </Segment>
                 </Form>
             </Grid.Column>
         </Grid>
