@@ -32,18 +32,19 @@ export const Login = () => {
                     <Segment raised>
 
                         <Form.Input fluid icon="user" iconPosition="left" placeholder= "Email Address"/>
-                        <Form.Input fluid icon="lock" iconPosition="left" placeholder= "Password" type="passowrd"/>
+                        <Form.Input fluid icon="lock" iconPosition="left" placeholder= "Password" type="password"/>
 
                         <Button type="Submit" color="green">
-                            <Icon name="key" />
+                            <Icon name="sign-in" />
                             Login
                         </Button>
-                        <Button type="Submit" color="blue">
+                        <Button color="blue">
                             <Icon name="user outline" />
                             Sign up
                         </Button>
                         
                     </Segment>
+                    
                     <Button type="Submit" color="red" onClick={handle_SignIn}>
                             <Icon name="google" />
                             Login with Google
