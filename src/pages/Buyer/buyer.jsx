@@ -54,7 +54,7 @@ export const Buyer = () => {
           <Item.Content>
             <Item.Header as='a'>{item.item.name}</Item.Header>
             <Item.Description>
-              There are no descriptions yet
+              {item.item.description}
             </Item.Description>
             <Item.Meta>
               <span>${item.item.price} &emsp;</span>
@@ -62,7 +62,7 @@ export const Buyer = () => {
             </Item.Meta>
             <Item.Extra>
               <Image avatar circular src={Placeholder_image} floated='left'/>
-              Username &emsp; 
+              {item.item.user} &emsp; 
               <Button primary>
                 Add to cart
                 <Icon name='chevron right' />

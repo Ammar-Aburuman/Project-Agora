@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
 import { Grid,Header,Form, Segment, Divider, Label, TextArea, Button, Icon } from "semantic-ui-react";
@@ -10,14 +10,17 @@ export const AddListing = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+
+    const user = useSelector((state) => state.name.name)
     const [name,setName] = useState("");
     const [price,setPrice] = useState(0);
+    const [description,setDescription] = useState("")
 
     const handle_submit = async (e) => {
         e.preventDefault()
 
         let item = {
-            name,price
+            name,price,user,description
         }
         try {
              await dispatch(addListingtoFirestore(item))
@@ -44,7 +47,7 @@ export const AddListing = () => {
                             <input />
                             <Label>.00</Label>
                         </Form.Input>
-                        <TextArea placeholder='Describe the item you are trying to sell...' style={{marginBottom: "20px"}}/>
+                        <TextArea placeholder='Describe the item you are trying to sell...' style={{marginBottom: "20px"}} value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
                         <Button color="red" onClick={()=>navigate("/buyer")}>
                             <Icon name="chevron left"/>Back</Button>
                         <Button color="blue" type="submit" onClick={handle_submit}>List Item</Button>
