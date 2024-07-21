@@ -51,7 +51,13 @@ export const AddListing = () => {
                     </Segment>
                     </Grid.Column>
                     <Grid.Column>
-                        Hello
+                    <Segment placeholder>
+                        <Header icon>
+                        <Icon name='file outline' />
+                        You have not uploaded any photos for this item.
+                        </Header>
+                        <Button primary>Add Photo</Button>
+                    </Segment>
                     </Grid.Column>
                     </Grid>
                     <Divider vertical/>
