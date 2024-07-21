@@ -39,7 +39,7 @@ export const Login = () => {
                             Login
                         </Button>
                         <Button color="blue">
-                            <Icon name="user outline" />
+                            <Icon name="user plus" />
                             Sign up
                         </Button>
                         

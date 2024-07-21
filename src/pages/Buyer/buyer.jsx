@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { fetchItems } from "../../Firebase/firebase-actions";
 
-import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Container, Image } from "semantic-ui-react";
+import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Container, Image } from "semantic-ui-react";
 
 import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
@@ -51,13 +51,13 @@ export const Buyer = () => {
           <Item.Image src={Placeholder_image} size="small" />
           <Item.Content>
             <Item.Header as='a'>{item.item.name}</Item.Header>
+            <Item.Description>
+              There are no descriptions yet
+            </Item.Description>
             <Item.Meta>
               <span>${item.item.price} &emsp;</span>
               <span> Post Date</span>
             </Item.Meta>
-            <Item.Description>
-              A description which may flow for several lines and give context to the content.
-            </Item.Description>
             <Item.Extra>
               <Image avatar circular src={Placeholder_image} floated='left'/>
               Username &emsp; 
@@ -73,7 +73,33 @@ export const Buyer = () => {
        
  ))};;
  </>
-): ( <div>asd</div>)}
+): (
+    <div style={{ height: '100vh' }}>
+    <Grid 
+      textAlign='center' 
+      verticalAlign='middle' 
+      style={{ height: '50%' }}
+    >
+      <Grid.Column>
+        <Container>
+          <Segment>There are no listings on this site yet. Would you like to add the first?
+            <br />
+            <br />
+          <Button size="tiny" onClick={()=>navigate("/list")}>
+                <IconGroup size="large">
+                    <Icon name="upload" />
+                    <Icon corner name="plus" />
+                </IconGroup>   
+            </Button>
+          </Segment>
+          
+        </Container>
+      </Grid.Column>
+    </Grid>
+  </div>
+)}
+
+
     </div>
     </>
         )
