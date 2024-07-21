@@ -14,6 +14,8 @@ export const Buyer = () => {
     const listings = useSelector((state) => state.listings.listingsArray);
     const dispatch = useDispatch();
 
+    const userName = useSelector((state) => state.name.name)
+
     useEffect(() => {
         dispatch(fetchItems());
     },[dispatch])
@@ -25,7 +27,7 @@ export const Buyer = () => {
             <Segment clearing>
             <Header as="h3" floated="left">
                 Hello 
-                <span class="ui header blue">  USERNAME_PLACEHOLDER</span>
+                <span class="ui header blue">  {userName}</span>
                 <HeaderSubheader>
                     <Link to ="/"> Signout
                      <Icon name="sign-in" />

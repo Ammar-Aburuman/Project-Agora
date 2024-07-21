@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
 import { Grid,Header,Form, Segment, Divider, Label, TextArea, Button, Icon } from "semantic-ui-react";
 

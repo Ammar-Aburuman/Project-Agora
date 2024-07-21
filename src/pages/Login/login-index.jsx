@@ -4,20 +4,25 @@ import { auth, provider } from "../../Firebase/firebase-config"
 
 import { Grid,Header,Image,Form,Segment,Button,Icon,Divider} from "semantic-ui-react"
 import logo from "./Firebase_Logo.png"
+import { useDispatch } from "react-redux"
 
-// import "./index.css"
+import { login_user } from "./features/nameSlice"
 
 export const Login = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const handle_SignIn = async () => {
 
-        // const results = await signInWithPopup(auth,provider)
-        // const authInfo = {
-        //     userID: results.user.ID,
-        //     name: results.user.displayName
-        // }
-        // localStorage.setItem("auth",JSON.stringify(authInfo))
+        const results = await signInWithPopup(auth,provider)
+        const authInfo = {
+            userID: results.user.ID,
+            name: results.user.displayName,
+
+            
+        }
+        localStorage.setItem("auth",JSON.stringify(authInfo))
+        dispatch(login_user(authInfo));
         navigate("/Buyer")
     }
     
