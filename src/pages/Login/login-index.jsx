@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import { signInWithPopup } from "firebase/auth"
 import { auth, provider } from "../../Firebase/firebase-config"
 
@@ -6,9 +7,16 @@ import { Grid,Header,Image,Form,Segment,Button,Icon,Divider} from "semantic-ui-r
 import logo from "./Firebase_Logo.png"
 import { useDispatch } from "react-redux"
 
+import ModalMsg from "./modal_msg"
+
 import { login_user } from "./features/nameSlice"
 
 export const Login = () => {
+
+    const [open, setOpen] = useState(false);
+
+    const openModel = () => setOpen(true);
+    const closeModel = () => setOpen(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -39,18 +47,19 @@ export const Login = () => {
                         <Form.Input fluid icon="user" iconPosition="left" placeholder= "Email Address"/>
                         <Form.Input fluid icon="lock" iconPosition="left" placeholder= "Password" type="password"/>
 
-                        <Button type="Submit" color="green">
+                        <Button type="submit" color="green" onClick={openModel}>
                             <Icon name="sign-in" />
                             Login
                         </Button>
-                        <Button color="blue">
+                        <Button color="blue" onClick={openModel}>
                             <Icon name="user plus" />
                             Sign up
                         </Button>
+                        <ModalMsg open={open} onClose={closeModel} />
 
                         <Divider horizontal>Or</Divider>
 
-                        <Button type="Submit" color="red" onClick={handle_SignIn}>
+                        <Button type="submit" color="red" onClick={handle_SignIn}>
                             <Icon name="google" />
                             Login with Google
                         </Button>
