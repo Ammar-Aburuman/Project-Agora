@@ -6,15 +6,20 @@ import { fetchItems } from "../../Firebase/firebase-actions";
 
 import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Container, Image } from "semantic-ui-react";
 import AddModal from "./Add Listing/addModal";
+import SignoutMsg from "./SignoutModal";
 
 import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
 export const Buyer = () => {
 
     const [open,setOpen] = useState(false);
+    const [openSign,setOpenSign] = useState(false);
 
-    const openModel = () =>setOpen(true);
-    const closeModel = () => setOpen(false);
+    const openModel_add = () =>setOpen(true);
+    const closeModel_add = () => setOpen(false);
+
+    const openModel_sign = () =>setOpenSign(true);
+    const closeModel_sign = () => setOpenSign(false);
 
     const navigate = useNavigate();
     const listings = useSelector((state) => state.listings.listingsArray);
@@ -35,9 +40,10 @@ export const Buyer = () => {
                 Hello 
                 <span class="ui header blue">  {userName}</span>
                 <HeaderSubheader>
-                    <Link to ="/"> Signout
+                    <Link onClick={openModel_sign}> Signout
                      <Icon name="sign-in" />
                     </Link>
+                    <SignoutMsg open={openSign} onClose={closeModel_sign}/>
                 </HeaderSubheader>
             </Header>
             <Header as="h3" floated="right">
@@ -47,13 +53,13 @@ export const Buyer = () => {
                     <Icon corner name="plus" />
                 </IconGroup>   
             </Button>
-            <Button onClick={openModel}>
+            <Button onClick={openModel_add}>
                 <IconGroup size="large">
                     <Icon name="file" />
                     <Icon corner name="plus" />
                 </IconGroup>   
             </Button>
-            <AddModal open={open} onClose={closeModel}/>
+            <AddModal open={open} onClose={closeModel_add}/>
             </Header>
             </Segment>
 
