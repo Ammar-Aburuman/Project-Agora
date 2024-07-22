@@ -1,14 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { fetchItems } from "../../Firebase/firebase-actions";
 
 import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Container, Image } from "semantic-ui-react";
+import AddModal from "./Add Listing/addModal";
 
 import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
 export const Buyer = () => {
+
+    const [open,setOpen] = useState(false);
+
+    const openModel = () =>setOpen(true);
+    const closeModel = () => setOpen(false);
 
     const navigate = useNavigate();
     const listings = useSelector((state) => state.listings.listingsArray);
@@ -41,8 +47,16 @@ export const Buyer = () => {
                     <Icon corner name="plus" />
                 </IconGroup>   
             </Button>
+            <Button onClick={openModel}>
+                <IconGroup size="large">
+                    <Icon name="file" />
+                    <Icon corner name="plus" />
+                </IconGroup>   
+            </Button>
+            <AddModal open={open} onClose={closeModel}/>
             </Header>
             </Segment>
+
 
         {listings.length > 0 ? (
             <>
