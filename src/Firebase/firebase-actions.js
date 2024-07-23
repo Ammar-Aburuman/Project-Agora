@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { serverTimestamp,addDoc, collection, getDocs } from "firebase/firestore";
 import db, {storage} from "./firebase-config";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
@@ -22,13 +22,14 @@ export const addListingtoFirestore = createAsyncThunk(
             item.imageLink = imageUrl;
 
             // Item part
-            const addItemRef = await addDoc(collection(db, 'Listings'), item);
+            const addItemRef = await addDoc(collection(db, 'Listings'), {...item, createdAt:serverTimestamp()});
             console.log('Item added:', addItemRef.id);
             const newItem = { id: addItemRef.id, item };
             return newItem;
-        } catch (error) {
-            console.error('Error adding item:', error);
-            throw error;
+            } 
+            catch (error) {
+                console.error('Error adding item:', error);
+                throw error;
         }
     }
 );
