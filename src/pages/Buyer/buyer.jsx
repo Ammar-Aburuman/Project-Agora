@@ -69,7 +69,7 @@ export const Buyer = () => {
               {listing.item.description}
             </Item.Description>
             <Item.Meta>
-              <span>${listing.item.price} &emsp;</span>
+              <span class = "ui header green">${listing.item.price} &emsp;</span> 
               <span> Post Date</span>
             </Item.Meta>
             <Item.Extra>
