@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"
 import { fetchItems } from "../../Firebase/firebase-actions";
 
 import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Container, Image } from "semantic-ui-react";
@@ -21,7 +20,6 @@ export const Buyer = () => {
     const openModel_sign = () =>setOpenSign(true);
     const closeModel_sign = () => setOpenSign(false);
 
-    const navigate = useNavigate();
     const listings = useSelector((state) => state.listings.listingsArray);
     const dispatch = useDispatch();
 
@@ -47,12 +45,6 @@ export const Buyer = () => {
                 </HeaderSubheader>
             </Header>
             <Header as="h3" floated="right">
-            <Button onClick={()=>navigate("/list")}>
-                <IconGroup size="large">
-                    <Icon name="upload" />
-                    <Icon corner name="plus" />
-                </IconGroup>   
-            </Button>
             <Button onClick={openModel_add}>
                 <IconGroup size="large">
                     <Icon name="file" />
@@ -93,7 +85,7 @@ export const Buyer = () => {
    
         </div>
        
- ))};;
+ ))}
  </>
 ): (
     <div style={{ height: '100vh' }}>
@@ -107,12 +99,13 @@ export const Buyer = () => {
           <Segment>There are no listings on this site yet. Would you like to add the first?
             <br />
             <br />
-          <Button size="tiny" onClick={()=>navigate("/list")}>
+            <Button onClick={openModel_add}>
                 <IconGroup size="large">
-                    <Icon name="upload" />
+                    <Icon name="file" />
                     <Icon corner name="plus" />
                 </IconGroup>   
             </Button>
+            <AddModal open={open} onClose={closeModel_add}/>
           </Segment>
           
         </Container>
