@@ -13,7 +13,7 @@ export const listingsSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(addListingtoFirestore.fulfilled,(state,action) => {
-            state.listingsArray.push(action.payload);
+            state.listingsArray.push(action.payload)
         })
         .addCase(fetchItems.fulfilled,(state,action) => {
             state.listingsArray = action.payload;

@@ -25,14 +25,16 @@ function AddModal({open,onClose}){
     const user = useSelector((state) => state.name.name)
     const [name,setName] = useState("");
     const [price,setPrice] = useState(0);
-    const [description,setDescription] = useState("")
+    const [description,setDescription] = useState("");
+    const [image,setImage] = useState(null);
 
     const handle_submit = async (e) => {
         e.preventDefault()
 
         let item = {
-            name,price,user,description
+            name,price,user,description,image
         }
+
         try {
              await dispatch(addListingtoFirestore(item)) && onClose()
              
@@ -82,7 +84,7 @@ function AddModal({open,onClose}){
                         <Icon name='file outline' />
                         You have not uploaded any photos for this item.
                         </Header>
-                        <Button primary>Add Photo</Button>
+                        <input type="file" onChange={(e) => {setImage(e.target.files[0])}} />
                     </Segment>
                     </Grid.Column>
                     </Grid>

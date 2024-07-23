@@ -59,22 +59,22 @@ export const Buyer = () => {
         {listings.length > 0 ? (
             <>
         <Header>Lisitings: </Header>
-        {listings.map((item) => (
-        <div  key={item.id} style={{padding:20}}>
+        {listings.map((listing) => (
+        <div  key={listing.id} style={{padding:20}}>
         <Item>
-          <Item.Image src={Placeholder_image} size="small" />
+          <Item.Image src={listing.item.imageLink} size="small" />
           <Item.Content>
-            <Item.Header as='a'>{item.item.name}</Item.Header>
+            <Item.Header as='a'>{listing.item.name}</Item.Header>
             <Item.Description>
-              {item.item.description}
+              {listing.item.description}
             </Item.Description>
             <Item.Meta>
-              <span>${item.item.price} &emsp;</span>
+              <span>${listing.item.price} &emsp;</span>
               <span> Post Date</span>
             </Item.Meta>
             <Item.Extra>
               <Image avatar circular src={Placeholder_image} floated='left'/>
-              {item.item.user} &emsp; 
+              {listing.item.user} &emsp; 
               <Button primary>
                 Add to cart
                 <Icon name='chevron right' />
