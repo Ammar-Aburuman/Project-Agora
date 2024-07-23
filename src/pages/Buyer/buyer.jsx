@@ -70,7 +70,7 @@ export const Buyer = () => {
             </Item.Description>
             <Item.Meta>
               <span class = "ui header green">${listing.item.price} &emsp;</span> 
-              <span> Post Date {listing.item.createdAt}</span>
+              <span> Post Date</span>                                                      {/* Need to add timestamp for post*/}
             </Item.Meta>
             <Item.Extra>
               <Image avatar circular src={listing.item.user_photo} floated='left'/>
