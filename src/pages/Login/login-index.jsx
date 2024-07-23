@@ -26,6 +26,7 @@ export const Login = () => {
         const authInfo = {
             userID: results.user.ID,
             name: results.user.displayName,
+            profilePhoto: results.user.photoURL,
 
             
         }

@@ -22,7 +22,11 @@ function AddModal({open,onClose}){
 
     const dispatch = useDispatch();
 
-    const user = useSelector((state) => state.name.name)
+    //user info to be assosiated with the listing
+    const user = useSelector((state) => state.name.name);
+    const user_photo = useSelector((state) => state.name.profilePhoto);
+
+
     const [name,setName] = useState("");
     const [price,setPrice] = useState(0);
     const [description,setDescription] = useState("");
@@ -32,7 +36,7 @@ function AddModal({open,onClose}){
         e.preventDefault()
 
         let item = {
-            name,price,user,description,image
+            name,price,user,user_photo,description,image
         }
 
         try {

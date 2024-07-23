@@ -7,7 +7,7 @@ import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Con
 import AddModal from "./Add Listing/addModal";
 import SignoutMsg from "./SignoutModal";
 
-import Placeholder_image from "./Placeholder_view_vector.svg.png";
+// import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
 export const Buyer = () => {
 
@@ -73,7 +73,7 @@ export const Buyer = () => {
               <span> Post Date</span>
             </Item.Meta>
             <Item.Extra>
-              <Image avatar circular src={Placeholder_image} floated='left'/>
+              <Image avatar circular src={listing.item.user_photo} floated='left'/>
               {listing.item.user} &emsp; 
               <Button primary>
                 Add to cart
