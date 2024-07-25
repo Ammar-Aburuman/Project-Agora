@@ -7,7 +7,6 @@ import {store} from "./store/store"
 
 import { Login } from './pages/Login/login-index';
 import { Buyer } from './pages/Buyer/buyer';
-import { AddListing } from './pages/Buyer/Add Listing/addListing';
 import { NotFound } from './pages/404 page/NotFound';
 
 
@@ -15,10 +14,6 @@ const router = createBrowserRouter([{
   path: "/",
   element: <Login/>,
   errorElement : <NotFound/>
-},
-{
-  path: "/list",
-  element: <AddListing/>,
 },
 {
   path: "/buyer",
