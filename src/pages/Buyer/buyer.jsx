@@ -7,7 +7,7 @@ import { Header,HeaderSubheader, Icon, Segment,Button,IconGroup, Item, Grid, Con
 import AddModal from "./Add Listing/addModal";
 import SignoutMsg from "./SignoutModal";
 
-// import Placeholder_image from "./Placeholder_view_vector.svg.png";
+// import Placeholder_image from "./Placeholder_view_vector.svg.png"; 
 
 export const Buyer = () => {
 
