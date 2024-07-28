@@ -12,7 +12,6 @@ import { Header,
         Container,
         Image,
         Menu,
-        Divider,
         Input,
         Card,
         CardContent,
@@ -24,7 +23,7 @@ import SignoutMsg from "./SignoutModal";
 
 import logo from "./Logomark_Monochrome_Black.svg"
 
-import Placeholder_image from "./Placeholder_view_vector.svg.png";
+// import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
 export const Buyer = () => {
 
