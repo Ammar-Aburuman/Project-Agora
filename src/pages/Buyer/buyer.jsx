@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../../Firebase/firebase-actions";
-
+import { v4 } from "uuid";
 import { Header,
          Icon,
         Segment,
@@ -16,8 +16,7 @@ import { Header,
         CardDescription, } from "semantic-ui-react";
 
 import { add_item } from "./features/CartSlice";
-import AddModal from "./Add Listing/addModal";
-import SignoutMsg from "./SignoutModal";
+import AddModal from "./Navbar/Modals/addModal";
 import Navbar from "./Navbar/Navbar";
 
 // import Placeholder_image from "./Placeholder_view_vector.svg.png";
@@ -27,32 +26,23 @@ export const Buyer = () => {
     const dispatch = useDispatch();
 
 
-
-    const [activeMenuItem,setActiveMenuItem] = useState("home")
-    const handlItemClick = (e, {name}) =>
-         { e.preventDefault()
-            setActiveMenuItem(name) && console.log(activeMenuItem)}
-
     const handleAddToCart = (name,price,image) => {
+      let id = v4();
         let item = {
-            name,price,image
+            name,price,image,id
         }
         dispatch(add_item(item));
-        console.log(item.name," Added to cart")
+        console.log(item.name,"Added to cart")
     }
 
     const [open,setOpen] = useState(false);
-    const [openSign,setOpenSign] = useState(false);
 
     const openModel_add = () =>setOpen(true);
     const closeModel_add = () => setOpen(false);
 
-    const openModel_sign = () =>setOpenSign(true);
-    const closeModel_sign = () => setOpenSign(false);
-
     const listings = useSelector((state) => state.listings.listingsArray);
 
-    const userName = useSelector((state) => state.name.name)
+    // const userName = useSelector((state) => state.name.name)
 
     useEffect(() => {
         dispatch(fetchItems());
@@ -63,63 +53,6 @@ export const Buyer = () => {
         <>
     <div>   
         <Navbar />
-            {/* <Segment attached size ="mini">
-                <Menu secondary>
-                    <Menu.Item name="logo">
-                        <img src={logo} active= {activeMenuItem === "logo"} onClick={handlItemClick}/>
-                    </Menu.Item>
-
-                    <Menu.Item>
-                        <Input type="text" icon="search" iconPosition="left" placeholder= "Search..." name="search" />
-                    </Menu.Item>
-                    
-                    <Menu.Item name="home" active={activeMenuItem === "home"} onClick={handlItemClick} />
-                    <Menu.Item name="products" active={activeMenuItem === "product"} onClick={handlItemClick} />
-                    <Menu.Item name="contact us" active={activeMenuItem === "contact us"} onClick={handlItemClick}/>
-                    
-                    <Menu.Item active ={activeMenuItem === "bell"} position="right" onClick={handlItemClick} >
-                        <Icon name="bell outline" size="large"/>
-                    </Menu.Item>
-
-                    <Menu.Item active ={activeMenuItem === "chat"} onClick={handlItemClick} >
-                        <Icon name="comment outline" size="large"/>
-                    </Menu.Item>
-
-                    <Menu.Item active ={activeMenuItem === "cart"} onClick={()=>handlItemClick}>
-                        <Icon name="shopping cart" size="large"/>
-                    </Menu.Item>
-
-                    <Menu.Item active ={activeMenuItem === "profile"} onClick={handlItemClick}>
-                        <Image src = {user_photo} size="mini" avatar />
-                    </Menu.Item>
-                    
-                    {activeMenuItem === "profile" ? <p>wew</p> : null}
-
-                </Menu>
-            </Segment> */}
-
-                {/* <Link onClick={openModel_sign}> Signout
-                <Icon name="sign-in" />
-                </Link>
-                <SignoutMsg open={openSign} onClose={closeModel_sign}/> */}
-            {/* <Button onClick={openModel_add}>
-                <IconGroup size="large">
-                    <Icon name="file" />
-                    <Icon corner name="plus" />
-                </IconGroup>   
-            </Button>
-            <AddModal open={open} onClose={closeModel_add}/> */}
-     
-            {/* <Segment clearing>
-            <Header as="h3" floated="left">
-                Hello 
-                <span class="ui header blue">  {userName}</span>
-                <HeaderSubheader>
-                </HeaderSubheader>
-            </Header>
-            <Header as="h3" floated="right">
-            </Header>
-            </Segment> */}
 
 
         {listings.length > 0 ? (

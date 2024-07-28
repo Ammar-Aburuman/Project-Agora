@@ -16,7 +16,7 @@ import {Modal,
 
 } from "semantic-ui-react"
 
-import { addListingtoFirestore } from "../../../Firebase/firebase-actions";
+import { addListingtoFirestore } from "../../../../Firebase/firebase-actions";
 
 function AddModal({open,onClose}){
 
