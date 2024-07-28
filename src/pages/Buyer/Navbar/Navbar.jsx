@@ -14,8 +14,8 @@ const Navbar = () => {
 
 
   const [open,setOpen] = useState(false);               //Add Items
-  const [openSign,setOpenSign] = useState(false);       //Sign out
-  const [openCart, setOpenCart] = useState(false);         
+  const [openSign,setOpenSign] = useState(false);       //Sign out                          //Perhaps there is a less bs way to manage modal states?
+  const [openCart, setOpenCart] = useState(false);      //Cart 
 
   const openModel_add = () =>setOpen(true);
   const closeModel_add = () => setOpen(false);
