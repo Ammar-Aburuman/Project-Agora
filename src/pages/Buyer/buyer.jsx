@@ -11,8 +11,6 @@ import { Header,
         Grid,
         Container,
         Image,
-        Menu,
-        Input,
         Card,
         CardContent,
         CardDescription, } from "semantic-ui-react";
@@ -20,8 +18,7 @@ import { Header,
 import { add_item } from "./features/CartSlice";
 import AddModal from "./Add Listing/addModal";
 import SignoutMsg from "./SignoutModal";
-
-import logo from "./Logomark_Monochrome_Black.svg"
+import { Navbar } from "./Navbar/Navbar";
 
 // import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
@@ -29,7 +26,7 @@ export const Buyer = () => {
 
     const dispatch = useDispatch();
 
-    const user_photo = useSelector((state) => state.name.profilePhoto);
+
 
     const [activeMenuItem,setActiveMenuItem] = useState("home")
     const handlItemClick = (e, {name}) =>
@@ -64,9 +61,9 @@ export const Buyer = () => {
 
     return ( 
         <>
-    <div>
-
-            <Segment attached size ="mini">
+    <div>   
+        <Navbar />
+            {/* <Segment attached size ="mini">
                 <Menu secondary>
                     <Menu.Item name="logo">
                         <img src={logo} active= {activeMenuItem === "logo"} onClick={handlItemClick}/>
@@ -99,12 +96,12 @@ export const Buyer = () => {
                     {activeMenuItem === "profile" ? <p>wew</p> : null}
 
                 </Menu>
+            </Segment> */}
+
                 {/* <Link onClick={openModel_sign}> Signout
                 <Icon name="sign-in" />
                 </Link>
                 <SignoutMsg open={openSign} onClose={closeModel_sign}/> */}
-            </Segment>
-
             {/* <Button onClick={openModel_add}>
                 <IconGroup size="large">
                     <Icon name="file" />
