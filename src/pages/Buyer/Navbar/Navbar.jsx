@@ -1,56 +1,51 @@
-import { Segment,
-         Menu,
-         Image,
-         Icon, 
-         Input,  
- } from "semantic-ui-react"
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { MenuItem, Menu, Segment, Icon, Image, Input } from 'semantic-ui-react';
+import logo from "../Logomark_Monochrome_Black.svg";
 
-import { useSelector } from "react-redux";
+const Navbar = () => {
+  const [activeItem, setActiveItem] = useState('logo');
+  const user_photo = useSelector((state) => state.name.profilePhoto);
 
+  const handleItemClick = (e, { name }) => setActiveItem(name);
 
-import logo from "../Logomark_Monochrome_Black.svg"
-
-
-export const Navbar = () => {
-
-    const user_photo = useSelector((state) => state.name.profilePhoto);
-
-    return (
-        <Segment attached size ="mini">
+  return (
+    <div>
+      <Segment attached size="mini">
         <Menu secondary>
-            <Menu.Item name="logo">
-                <img src={logo}/>
-            </Menu.Item>
+          <MenuItem name="logo">
+            <img src={logo} active={activeItem === "logo"} onClick={() => handleItemClick(null, { name: "logo" })}/>
+          </MenuItem>
 
-            <Menu.Item>
-                <Input type="text" icon="search" iconPosition="left" placeholder= "Search..." name="search" />
-            </Menu.Item>
-            
-            <Menu.Item name="home"   />
-            <Menu.Item name="products"  />
-            <Menu.Item name="contact us"  />
-            
-            <Menu.Item  position="right"  >
-                <Icon name="bell outline" size="large"/>
-            </Menu.Item>
+          <MenuItem>
+            <Input type="text" icon="search" iconPosition="left" placeholder="Search..." name="search" />
+          </MenuItem>
 
-            <Menu.Item >
-                <Icon name="comment outline" size="large"/>
-            </Menu.Item>
+          <MenuItem name="home" active={activeItem === "home"} onClick={handleItemClick} />
+          <MenuItem name="products" active={activeItem === "products"} onClick={handleItemClick} />
+          <MenuItem name="contact us" active={activeItem === "contact us"} onClick={handleItemClick} />
+          
+          <MenuItem active={activeItem === "bell"} position="right" onClick={() => handleItemClick(null, { name: "bell" })}>
+            <Icon name="bell outline" size="large"/>
+          </MenuItem>
 
-            <Menu.Item  >
-                <Icon name="shopping cart" size="large"/>
-            </Menu.Item>
+          <MenuItem active={activeItem === "chat"} onClick={() => handleItemClick(null, { name: "chat" })}>
+            <Icon name="comment outline" size="large"/>
+          </MenuItem>
 
-            <Menu.Item  >
-                <Image src = {user_photo} size="mini" avatar />
-            </Menu.Item>
+          <MenuItem active={activeItem === "cart"} onClick={() => handleItemClick(null, { name: "cart" })}>
+            <Icon name="shopping cart" size="large"/>
+          </MenuItem>
 
+          <MenuItem active={activeItem === "profile"} onClick={() => handleItemClick(null, { name: "profile" })}>
+            <Image src={user_photo} size="mini" avatar />
+          </MenuItem>
+          
+          {activeItem === "profile" ? <p>wew</p> : null}
         </Menu>
-        {/* <Link onClick={openModel_sign}> Signout
-        <Icon name="sign-in" />
-        </Link>
-        <SignoutMsg open={openSign} onClose={closeModel_sign}/> */}
-    </Segment>
-    )
+      </Segment>
+    </div>
+  );
 }
+
+export default Navbar;

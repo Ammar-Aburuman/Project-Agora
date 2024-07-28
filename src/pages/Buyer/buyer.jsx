@@ -18,7 +18,7 @@ import { Header,
 import { add_item } from "./features/CartSlice";
 import AddModal from "./Add Listing/addModal";
 import SignoutMsg from "./SignoutModal";
-import { Navbar } from "./Navbar/Navbar";
+import Navbar from "./Navbar/Navbar";
 
 // import Placeholder_image from "./Placeholder_view_vector.svg.png";
 
