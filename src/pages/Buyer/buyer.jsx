@@ -89,9 +89,7 @@ export const Buyer = () => {
                         <Icon name="comment outline" size="large"/>
                     </Menu.Item>
 
-                    <Menu.Item active ={activeMenuItem === "cart"} onClick={()=>{
-                        console.log('testtttt')
-                    }}>
+                    <Menu.Item active ={activeMenuItem === "cart"} onClick={()=>handlItemClick}>
                         <Icon name="shopping cart" size="large"/>
                     </Menu.Item>
 
