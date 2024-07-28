@@ -31,6 +31,7 @@ function AddModal({open,onClose}){
     const [price,setPrice] = useState(0);
     const [description,setDescription] = useState("");
     const [image,setImage] = useState(null);
+    const [submitted,setSubmitted] = useState(false)
 
     const handle_submit = async (e) => {
         e.preventDefault()
@@ -40,7 +41,10 @@ function AddModal({open,onClose}){
         }
 
         try {
-             await dispatch(addListingtoFirestore(item)) && onClose()
+             setSubmitted(true);
+             await dispatch(addListingtoFirestore(item));
+             setSubmitted(false);
+             onClose();
              
         }
         catch (error) {
@@ -112,6 +116,7 @@ function AddModal({open,onClose}){
           icon='plus'
           positive
           onClick={handle_submit}
+          loading = {submitted}
         />
             </ModalActions>
             
