@@ -66,10 +66,13 @@ export const Buyer = () => {
         <div key={listing.id} style={{padding:20}}>
         <Card style={{maxWidth:"180px"}} >
           <CardContent>
-          <Image src={listing.item.imageLink} size="small" fluid />
+          <Image src={listing.item.imageLink} size="small" style ={{width: "150px" , height: "200px"}} />
             <Card.Header>{listing.item.name}</Card.Header>
             <Card.Meta>Sold by <a href="/buyer">{listing.item.user}</a> </Card.Meta>
-            <CardDescription>{listing.item.description}</CardDescription>
+            <CardDescription>{listing.item.description.length > 21 ? (
+                listing.item.description.slice(0,21) + "...") : listing.item.description
+            }
+            </CardDescription>
           </CardContent>
           <CardContent extra>
             <label style={{color:"blue", fontSize:"17px"}}>${listing.item.price}.00</label>
