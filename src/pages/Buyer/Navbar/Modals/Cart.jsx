@@ -14,7 +14,7 @@ import {Modal,
         Icon,
         } from "semantic-ui-react";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import { decrease, increase , deleteItem } from "../../features/CartSlice";
@@ -38,18 +38,6 @@ function Cart({ open, onClose }) {
 
     return (
         <>
-        <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover={false}
-                theme="light"
-                />
         <Modal
             centered={false}
             open={open}
@@ -120,7 +108,7 @@ function Cart({ open, onClose }) {
 
             
 
-):(
+):(                 // Case 2 No items in cart
     <>
     <ModalContent>
         <h1 style={{textAlign:"center",margin:"100px"}}>Your Cart is Empty</h1>
