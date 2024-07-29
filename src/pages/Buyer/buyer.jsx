@@ -15,6 +15,10 @@ import { Header,
         CardContent,
         CardDescription, } from "semantic-ui-react";
 
+
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import { add_item } from "./features/CartSlice";
 import AddModal from "./Navbar/Modals/addModal";
 import Navbar from "./Navbar/Navbar";
@@ -33,6 +37,8 @@ export const Buyer = () => {
         }
         dispatch(add_item(item));
         console.log(item.name,"Added to cart")
+        const addMsg = () => toast.success(item.name + "Added to cart")
+        addMsg()
     }
 
     const [open,setOpen] = useState(false);
@@ -81,11 +87,24 @@ export const Buyer = () => {
                 <ButtonContent visible>
                     <Icon name="cart"/>
                 </ButtonContent>
+                
             </Button>
           </CardContent>
         </Card>
 
-   
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light"
+          />
+            
         </div>
        
  ))}
