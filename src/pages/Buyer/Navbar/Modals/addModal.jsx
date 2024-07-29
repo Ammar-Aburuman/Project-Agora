@@ -15,6 +15,8 @@ import {Modal,
         Divider
 
 } from "semantic-ui-react"
+import { useFormik } from "formik";
+import * as yup from "yup"
 
 import { addListingtoFirestore } from "../../../../Firebase/firebase-actions";
 
@@ -26,18 +28,29 @@ function AddModal({open,onClose}){
     const user = useSelector((state) => state.name.name);
     const user_photo = useSelector((state) => state.name.profilePhoto);
 
-
-    const [name,setName] = useState("");
-    const [price,setPrice] = useState(0);
-    const [description,setDescription] = useState("");
     const [image,setImage] = useState(null);
     const [submitted,setSubmitted] = useState(false)
+
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            price: "",
+            description:"",
+        },
+
+        validationSchema:yup.object({
+            name: yup.string().required("Please enter a name for your item"),
+            price:yup.number().required("Please add a price for your item"),
+            description: yup.string().required("Enter a description for your item")
+        }),
+        
+    })
 
     const handle_submit = async (e) => {
         e.preventDefault()
 
         let item = {
-            name,price,user,user_photo,description,image
+            ...formik.values, image,user,user_photo
         }
 
         try {
@@ -68,22 +81,32 @@ function AddModal({open,onClose}){
                 <Form size="large">
                     <Grid Grid columns={2} relaxed='very'>
                     <Grid.Column style= {{maxWidth:1000}} >
-                    
-                        <Form.Input  placeholder = "Item Name" value = {name} onChange={(e)=>{setName(e.target.value)}}/>
-                        <Form.Input labelPosition="right" 
+
+                        {formik.touched.name && formik.errors.name ? <label style={{color:"red"}}>{formik.errors.name}</label>: null}
+                        <Form.Input name="name" placeholder = "Item Name" value= {formik.values.name} 
+                                                               onChange={formik.handleChange}
+                                                               onBlur= {formik.handleBlur}/>
+
+                        {formik.touched.price && formik.errors.price ? <label style={{color:"red"}}>{formik.errors.price}</label>: null}
+                        <Form.Input name="price" labelPosition="right" 
                                     type="text" 
                                     placeholder="Item Price" 
-                                    value= {price} 
-                                    onChange={(e)=>{setPrice(e.target.value)}} >
+                                    value= {formik.values.price} 
+                                    onChange={formik.handleChange} 
+                                    onBlur= {formik.handleBlur} >
 
                             <Label basic>$</Label>
                             <input />
                             <Label>.00</Label>
                         </Form.Input>
+                        {formik.touched.description && formik.errors.description ? <label style={{color:"red"}}>{formik.errors.description}</label>: null}
                         <TextArea placeholder='Describe the item you are trying to sell...'
+                                  name="description"
                                   style={{marginBottom: "20px"}}
-                                  value={description} 
-                                  onChange={(e)=>{setDescription(e.target.value)}} />
+                                  value= {formik.values.description}
+                                  onChange={formik.handleChange} 
+                                  onBlur= {formik.handleBlur}
+                                  />
                     
                     </Grid.Column>
                     <Grid.Column>

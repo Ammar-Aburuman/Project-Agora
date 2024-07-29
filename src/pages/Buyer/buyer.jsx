@@ -66,7 +66,7 @@ export const Buyer = () => {
 
         <Header style={{padding:10}}>Lisitings: </Header>
 
-        <div style={{display:"flex", maxWidth:"20px"}}>
+        <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px"}}>
 
         {listings.map((listing) => (
         <div key={listing.id} style={{padding:20}}>
