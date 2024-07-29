@@ -14,6 +14,9 @@ import {Modal,
         Icon,
         } from "semantic-ui-react";
 
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import { decrease, increase , deleteItem } from "../../features/CartSlice";
 
 function Cart({ open, onClose }) {
@@ -34,6 +37,19 @@ function Cart({ open, onClose }) {
 
 
     return (
+        <>
+        <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="light"
+                />
         <Modal
             centered={false}
             open={open}
@@ -65,7 +81,7 @@ function Cart({ open, onClose }) {
                                 <h3 style={{margin:"50px 0 0 0"}}>${item.price}.00</h3>
                                 </GridColumn>
                                 <GridColumn width={1}>
-                                <Button icon="trash" negative style= {{margin:"50px 0 0 0"}} onClick={()=>dispatch(deleteItem({id :item.id}))}></Button>
+                                <Button icon="trash" negative style= {{margin:"50px 0 0 0"}} onClick={()=>dispatch(deleteItem({id :item.id} , toast.error("Removed "+ item.name + " from cart")))}></Button>
                                 </GridColumn>
                             </GridRow>
 
@@ -96,7 +112,13 @@ function Cart({ open, onClose }) {
                 <Icon name='right chevron' />
             </Button>
             </ModalActions>
+
+            
             </>
+
+            
+
+            
 
 ):(
     <>
@@ -110,7 +132,9 @@ function Cart({ open, onClose }) {
 ) }
 
         </Modal>
+        </>
     );
+    
 }
 
 export default Cart;
